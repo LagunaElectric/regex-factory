@@ -16,6 +16,8 @@
     "@types/node": "^18.16.19",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "@vueuse/core": "^10.2.1",
+    "@vueuse/nuxt": "^10.2.1",
     "eslint": "^8.45.0",
     "eslint-plugin-vue": "^9.15.1",
     "nuxt": "^3.6.3",
