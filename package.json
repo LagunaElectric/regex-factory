@@ -20,5 +20,8 @@
     "eslint-plugin-vue": "^9.15.1",
     "nuxt": "^3.6.3",
     "nuxt-mongoose": "^0.0.9"
+  },
+  "dependencies": {
+    "@gathertown/gather-game-client": "^42.0.0"
   }
 }
