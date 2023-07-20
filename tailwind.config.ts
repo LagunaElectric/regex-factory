@@ -1,11 +1,7 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
-  content: [
-    './src/**/*.{vue,js,ts,jsx,tsx}',
-    './nuxt.config.{js,ts}',
-    'content/**/**.md',
-  ],
+  content: ["./src/**/*.{vue,js,ts,jsx,tsx}", "./nuxt.config.{js,ts}", "content/**/**.md"],
   theme: {
     extend: {},
   },
@@ -13,4 +9,4 @@ export default {
     extend: {},
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;

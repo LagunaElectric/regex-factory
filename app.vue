@@ -1,8 +1,7 @@
-<!-- make ts script setup with a string ref for the input -->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const input = ref('')
+const input = ref("");
 </script>
 
 <template>
