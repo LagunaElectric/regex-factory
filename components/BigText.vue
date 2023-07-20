@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from "vue"
 
 export type MyCompProps = {
-  modelValue?: string;
-};
+  modelValue?: string
+}
 
-const props = defineProps<MyCompProps>();
-const emit = defineEmits(["update:modelValue"]);
+const props = defineProps<MyCompProps>()
+const emit = defineEmits(["update:modelValue"])
 
 const value = computed({
   get() {
-    return props.modelValue ?? "";
+    return props.modelValue ?? ""
   },
   set(value) {
-    emit("update:modelValue", value);
+    emit("update:modelValue", value)
   },
-});
+})
 </script>
 
 <template>

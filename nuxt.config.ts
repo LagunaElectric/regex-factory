@@ -10,4 +10,4 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-icon",
   ],
-});
+})

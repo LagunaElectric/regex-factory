@@ -1,10 +1,10 @@
 <script setup lang="ts">
 export type IconButtonProps = {
-  name: string;
-  color: string;
-};
+  name: string
+  color: string
+}
 
-const props = defineProps<IconButtonProps>();
+const props = defineProps<IconButtonProps>()
 </script>
 
 <template>
