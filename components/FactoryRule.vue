@@ -1,17 +1,83 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+export type FactoryRuleProps = {
+  match: string
+  substitute: string
+  isRegEx: boolean
+  isCaseSensitive: boolean
+  isWholeWord: boolean
+  isSelection: boolean
+}
+
+const props = defineProps<FactoryRuleProps>()
+const emit = defineEmits([
+  "update:match",
+  "update:substitute",
+  "update:isRegEx",
+  "update:isCaseSensitive",
+  "update:isWholeWord",
+  "update:isSelection",
+])
+
+const toggleRegEx = () => {
+  emit("update:isRegEx", !props.isRegEx)
+}
+
+const toggleCaseSensitive = () => {
+  emit("update:isCaseSensitive", !props.isCaseSensitive)
+}
+
+const toggleWholeWord = () => {
+  emit("update:isWholeWord", !props.isWholeWord)
+}
+
+const toggleSelection = () => {
+  emit("update:isSelection", !props.isSelection)
+}
+
+const toggleDelete = () => {
+  // implement delete functionality here
+}
+</script>
 
 <template>
-  <div class="flex h-fit">
-    <div class="flex flex-col border-2 border-dashed border-red-400">
-      <label class="text-sm" for="find-text">Match:</label>
-      <input type="text" name="findText" id="find-text" class="border-blue-400 border-2" />
+  <div class="flex justify-between">
+    <div class="flex gap-1">
+      <span>{{ props.match }}</span>
+      <span>{{ props.substitute }}</span>
     </div>
-    <div class="flex flex-col border-2 border-dashed border-red-400">
-      <label class="text-sm" for="find-text">Replace:</label>
-      <input type="text" name="findText" id="find-text" class="border-blue-400 border-2" />
-    </div>
-    <div class="px-2 bg-green-200 h-fit w-fit">
-      <IconButton name="mdi:regex" color="black" @click="console.log('clicked')" />
+    <div class="flex gap-1">
+      <IconButton
+        name="mdi:regex"
+        :class="{
+          'text-blue-300': props.isRegEx,
+          'text-gray-300': !props.isRegEx,
+        }"
+        @click="toggleRegEx"
+      />
+      <IconButton
+        name="mdi:format-letter-case"
+        :class="{
+          'text-blue-300': props.isCaseSensitive,
+          'text-gray-300': !props.isCaseSensitive,
+        }"
+        @click="toggleCaseSensitive"
+      />
+      <IconButton
+        name="material-symbols:match-word-rounded"
+        :class="{
+          'text-blue-300': props.isWholeWord,
+          'text-gray-300': !props.isWholeWord,
+        }"
+        @click="toggleWholeWord"
+      />
+      <IconButton
+        name="codicon:list-selection"
+        :class="{
+          'text-blue-300': props.isSelection,
+          'text-gray-300': !props.isSelection,
+        }"
+        @click="toggleSelection"
+      />
     </div>
   </div>
 </template>

@@ -1,5 +1,6 @@
 {
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "prettier.prettierPath": "./node_modules/prettier",
-  "eslint.enable": false
+  "eslint.enable": false,
+  "prettier.enable": false
 }
