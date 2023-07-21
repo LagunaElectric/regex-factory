@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { FactoryRuleProps } from "./FactoryRule.vue"
-import { create } from "domain"
 const emit = defineEmits(["ruleCreated"])
 
 const match = ref("")

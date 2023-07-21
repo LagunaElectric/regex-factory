@@ -1,5 +1,5 @@
 <script setup lang="ts">
-export type FactoryRuleProps = {
+export interface FactoryRuleProps {
   match: string
   substitute: string
   isRegEx: boolean
@@ -41,6 +41,7 @@ const requestDelete = () => {
 <template>
   <div class="flex justify-between">
     <div class="flex gap-1">
+      <!-- TODO: Truncate text at a certain length. -->
       <span>{{ props.match }}</span>
       <span class="text-gray-300"> → </span>
       <span>{{ props.substitute || '""' }}</span>

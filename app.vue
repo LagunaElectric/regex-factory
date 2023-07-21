@@ -1,36 +1,35 @@
 <script setup lang="ts">
-import { match } from "assert"
 import { FactoryRuleProps } from "components/FactoryRule.vue"
-import { parse } from "path"
 import { ref } from "vue"
 
-const appTitle = 'RegEx Factory'
-const appDescription = 'RegEx Factory is a tool for transforming text with RegEx. It allows you to easily create rules and apply them to input text, providing you with the output text that matches your rules. With RegEx Factory, you can save time and effort in creating complex regular expressions, and focus on what really matters - your project.'
+const appTitle = "RegEx Factory"
+const appDescription =
+  "RegEx Factory is a tool for transforming text with RegEx. It allows you to easily create rules and apply them to input text, providing you with the output text that matches your rules. With RegEx Factory, you can save time and effort in creating complex regular expressions, and focus on what really matters - your project."
 
 useSeoMeta({
   title: appTitle,
   description: appDescription,
   ogTitle: appTitle,
   ogDescription: appDescription,
-  ogImage: '[og:image]',
-  ogUrl: '[og:url]',
+  ogImage: "[og:image]",
+  ogUrl: "[og:url]",
   twitterTitle: appTitle,
   twitterDescription: appDescription,
-  twitterImage: '[twitter:image]',
-  twitterCard: 'summary'
+  twitterImage: "[twitter:image]",
+  twitterCard: "summary",
 })
 
 useHead({
   htmlAttrs: {
-    lang: 'en'
+    lang: "en",
   },
   link: [
     {
-      rel: 'icon',
-      type: 'image/png',
-      href: '/favicon.png'
-    }
-  ]
+      rel: "icon",
+      type: "image/png",
+      href: "/favicon.png",
+    },
+  ],
 })
 
 const input = ref("")
@@ -57,17 +56,17 @@ watch([input, factoryRules], applyRules)
 </script>
 
 <template>
-  <div class="h-[100vh] flex justify-between">
+  <div class="h-[100vh] grid grid-cols-3 gap-1 justify-stretch items-stretch">
     <!-- <NuxtWelcome /> -->
-    <BigText label="Input:" class="w-1/3 h-full p-2 bg-gray-800 text-gray-300" v-model="input" />
-    <div class="flex flex-col grow">
+    <BigText label="Input:" class="h-full inline-block p-2 sticky" v-model="input" />
+    <div class="flex flex-col grow sticky">
       <RuleFactory
-        class="border-2 border-green-400 border-dashed justify-between"
+        class="border-2 border-orange-400 border-dashed justify-between"
         @rule-created="(rule) => factoryRules.push(rule)"
       />
       <FactoryRule
         v-for="(rule, i) in factoryRules"
-        class="border-2 border-green-400 border-dashed"
+        class="border-2 border-purple-400 border-dashed"
         :key="
           `${i}-${((rule.match.length * (rule.substitute.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(
             '.',
@@ -82,6 +81,6 @@ watch([input, factoryRules], applyRules)
         @delete="() => factoryRules.splice(i, 1)"
       />
     </div>
-    <BigText label="Output:" class="w-1/3 h-full p-2 bg-gray-800 text-gray-300" v-model="output" />
+    <BigText label="Output:" class="h-full p-2 inline-block" v-model="output" />
   </div>
 </template>
