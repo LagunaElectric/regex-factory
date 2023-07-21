@@ -1,6 +1,37 @@
 <script setup lang="ts">
+import { match } from "assert"
 import { FactoryRuleProps } from "components/FactoryRule.vue"
+import { parse } from "path"
 import { ref } from "vue"
+
+const appTitle = 'RegEx Factory'
+const appDescription = 'RegEx Factory is a tool for transforming text with RegEx. It allows you to easily create rules and apply them to input text, providing you with the output text that matches your rules. With RegEx Factory, you can save time and effort in creating complex regular expressions, and focus on what really matters - your project.'
+
+useSeoMeta({
+  title: appTitle,
+  description: appDescription,
+  ogTitle: appTitle,
+  ogDescription: appDescription,
+  ogImage: '[og:image]',
+  ogUrl: '[og:url]',
+  twitterTitle: appTitle,
+  twitterDescription: appDescription,
+  twitterImage: '[twitter:image]',
+  twitterCard: 'summary'
+})
+
+useHead({
+  htmlAttrs: {
+    lang: 'en'
+  },
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon.png'
+    }
+  ]
+})
 
 const input = ref("")
 const output = ref("")
@@ -10,7 +41,13 @@ const factoryRules = reactive<FactoryRuleProps[]>([])
 function applyRules() {
   let result = input.value
   for (const rule of factoryRules) {
-    const regex = new RegExp(rule.match, "g")
+    let match = rule.match
+    if (!rule.isRegEx) match = match.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")
+    match = rule.isWholeWord ? `\\b${match}\\b` : match
+    let flags = "m"
+    if (!rule.isCaseSensitive) flags += "i"
+    if (rule.isReplaceAll) flags += "g"
+    const regex = new RegExp(match, flags)
     result = result.replace(regex, rule.substitute)
   }
   output.value = result
@@ -22,20 +59,29 @@ watch([input, factoryRules], applyRules)
 <template>
   <div class="h-[100vh] flex justify-between">
     <!-- <NuxtWelcome /> -->
-    <BigText label="Input:" class="w-1/3 h-full p-2" v-model="input" />
-    <div class="flex flex-col">
-      <RuleFactory class="border-2 border-green-400 border-dashed" @rule-created="(rule) => factoryRules.push(rule)" />
+    <BigText label="Input:" class="w-1/3 h-full p-2 bg-gray-800 text-gray-300" v-model="input" />
+    <div class="flex flex-col grow">
+      <RuleFactory
+        class="border-2 border-green-400 border-dashed justify-between"
+        @rule-created="(rule) => factoryRules.push(rule)"
+      />
       <FactoryRule
-        v-for="rule in factoryRules"
+        v-for="(rule, i) in factoryRules"
         class="border-2 border-green-400 border-dashed"
+        :key="
+          `${i}-${((rule.match.length * (rule.substitute.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(
+            '.',
+            '',
+          )
+        "
         v-bind="rule"
         @update:is-reg-ex="(val) => (rule.isRegEx = val)"
         @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
         @update:is-whole-word="(val) => (rule.isWholeWord = val)"
-        @update:is-selection="(val) => (rule.isSelection = val)"
+        @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
+        @delete="() => factoryRules.splice(i, 1)"
       />
-      <p class="whitespace-pre-wrap">{{ input }}</p>
     </div>
-    <BigText label="Output:" class="w-1/3 h-full p-2" v-model="output" />
+    <BigText label="Output:" class="w-1/3 h-full p-2 bg-gray-800 text-gray-300" v-model="output" />
   </div>
 </template>

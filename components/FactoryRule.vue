@@ -5,17 +5,16 @@ export type FactoryRuleProps = {
   isRegEx: boolean
   isCaseSensitive: boolean
   isWholeWord: boolean
-  isSelection: boolean
+  isReplaceAll: boolean
 }
 
 const props = defineProps<FactoryRuleProps>()
 const emit = defineEmits([
-  "update:match",
-  "update:substitute",
   "update:isRegEx",
   "update:isCaseSensitive",
   "update:isWholeWord",
-  "update:isSelection",
+  "update:isReplaceAll",
+  "delete",
 ])
 
 const toggleRegEx = () => {
@@ -30,12 +29,12 @@ const toggleWholeWord = () => {
   emit("update:isWholeWord", !props.isWholeWord)
 }
 
-const toggleSelection = () => {
-  emit("update:isSelection", !props.isSelection)
+const toggleReplaceAll = () => {
+  emit("update:isReplaceAll", !props.isReplaceAll)
 }
 
-const toggleDelete = () => {
-  // implement delete functionality here
+const requestDelete = () => {
+  emit("delete")
 }
 </script>
 
@@ -43,13 +42,14 @@ const toggleDelete = () => {
   <div class="flex justify-between">
     <div class="flex gap-1">
       <span>{{ props.match }}</span>
-      <span>{{ props.substitute }}</span>
+      <span class="text-gray-300"> → </span>
+      <span>{{ props.substitute || '""' }}</span>
     </div>
     <div class="flex gap-1">
       <IconButton
         name="mdi:regex"
         :class="{
-          'text-blue-300': props.isRegEx,
+          'text-blue-600': props.isRegEx,
           'text-gray-300': !props.isRegEx,
         }"
         @click="toggleRegEx"
@@ -57,7 +57,7 @@ const toggleDelete = () => {
       <IconButton
         name="mdi:format-letter-case"
         :class="{
-          'text-blue-300': props.isCaseSensitive,
+          'text-blue-600': props.isCaseSensitive,
           'text-gray-300': !props.isCaseSensitive,
         }"
         @click="toggleCaseSensitive"
@@ -65,19 +65,20 @@ const toggleDelete = () => {
       <IconButton
         name="material-symbols:match-word-rounded"
         :class="{
-          'text-blue-300': props.isWholeWord,
+          'text-blue-600': props.isWholeWord,
           'text-gray-300': !props.isWholeWord,
         }"
         @click="toggleWholeWord"
       />
       <IconButton
-        name="codicon:list-selection"
+        name="codicon:replace-all"
         :class="{
-          'text-blue-300': props.isSelection,
-          'text-gray-300': !props.isSelection,
+          'text-blue-600': props.isReplaceAll,
+          'text-gray-300': !props.isReplaceAll,
         }"
-        @click="toggleSelection"
+        @click="toggleReplaceAll"
       />
+      <IconButton name="mdi:delete-outline" class="text-red-300" @click="requestDelete" />
     </div>
   </div>
 </template>

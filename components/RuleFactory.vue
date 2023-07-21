@@ -10,7 +10,7 @@ const substitute = ref("")
 const isRegEx = ref(false)
 const isCaseSensitive = ref(false)
 const isWholeWord = ref(false)
-const isSelection = ref(false)
+const isReplaceAll = ref(false)
 
 function toggleRegEx() {
   isRegEx.value = !isRegEx.value
@@ -24,8 +24,8 @@ function toggleWholeWord() {
   isWholeWord.value = !isWholeWord.value
 }
 
-function toggleSelection() {
-  isSelection.value = !isSelection.value
+function toggleReplaceAll() {
+  isReplaceAll.value = !isReplaceAll.value
 }
 
 function reset() {
@@ -34,7 +34,7 @@ function reset() {
   isRegEx.value = false
   isCaseSensitive.value = false
   isWholeWord.value = false
-  isSelection.value = false
+  isReplaceAll.value = false
 }
 
 function createRule() {
@@ -45,7 +45,7 @@ function createRule() {
     isRegEx: isRegEx.value,
     isCaseSensitive: isCaseSensitive.value,
     isWholeWord: isWholeWord.value,
-    isSelection: isSelection.value,
+    isReplaceAll: isReplaceAll.value,
   } as FactoryRuleProps)
   reset()
 }
@@ -107,13 +107,13 @@ function createRule() {
         }"
       />
       <IconButton
-        name="codicon:list-selection"
+        name="codicon:replace-all"
         color="black"
-        @click="toggleSelection()"
-        :is-toggled="isSelection"
+        @click="toggleReplaceAll()"
+        :is-toggled="isReplaceAll"
         :class="{
-          'bg-green-400': isSelection,
-          'bg-green-200': !isSelection,
+          'bg-green-400': isReplaceAll,
+          'bg-green-200': !isReplaceAll,
         }"
       />
     </div>
