@@ -38,7 +38,7 @@ const substituteSpanWidthInChars = computed(() => {
 })
 
 const isMatchOverflown = computed(() => matchSpanWidthInChars.value < props.match.length)
-const isSubstituteOverflown = computed(() => substituteSpanWidth.value > 200)
+const isSubstituteOverflown = computed(() => substituteSpanWidthInChars.value < props.substitute.length)
 
 const matchTruncated = computed(() => {
   if (isMatchOverflown.value) return props.match.slice(0, matchSpanWidthInChars.value - 3) + "..."
@@ -46,7 +46,7 @@ const matchTruncated = computed(() => {
 })
 
 const substituteTruncated = computed(() => {
-  if (isSubstituteOverflown) return props.substitute.slice(0, substituteSpanWidthInChars.value) + "..."
+  if (isSubstituteOverflown.value) return props.substitute.slice(0, substituteSpanWidthInChars.value) + "..."
   return props.substitute
 })
 
