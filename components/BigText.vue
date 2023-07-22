@@ -20,10 +20,10 @@ const value = computed({
 </script>
 
 <template>
-  <div class="flex flex-col border-2 border-dashed border-green-400">
-    <label v-if="props.label" for="textInput">{{ props.label }}</label>
+  <div class="flex flex-col">
+    <label v-if="props.label" for="textInput" class="dark:text-neutral-200">{{ props.label }}</label>
     <textarea
-      class="resize-none min-w-32 w-full h-full aspect-square min-h-min border-4 border-blue-500"
+      class="resize-none min-w-32 w-full h-full dark:bg-primary-700 dark:text-neutral-200 font-semibold tracking-wide rounded-sm p-2"
       name="input"
       id="textInput"
       cols="30"

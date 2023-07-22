@@ -56,10 +56,10 @@ watch([input, factoryRules], applyRules)
 </script>
 
 <template>
-  <div class="h-[100vh] grid grid-cols-3 gap-1 justify-stretch items-stretch">
+  <div class="h-[100vh] grid grid-cols-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200">
     <!-- <NuxtWelcome /> -->
     <BigText label="Input:" class="h-full inline-block p-2 sticky" v-model="input" />
-    <div class="flex flex-col grow sticky">
+    <div class="flex flex-col grow">
       <RuleFactory
         class="border-2 border-orange-400 border-dashed justify-between"
         @rule-created="(rule) => factoryRules.push(rule)"

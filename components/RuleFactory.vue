@@ -52,70 +52,66 @@ function createRule() {
 
 <template>
   <div class="flex items-center h-fit gap-1 px-1">
-    <div>
-      <div class="flex flex-col border-2 border-dashed border-red-400">
-        <input
-          v-model="match"
-          placeholder="Find"
-          type="text"
-          name="findText"
-          id="find-text"
-          class="border-blue-400 border-2"
-        />
-      </div>
-      <div class="flex flex-col border-2 border-dashed border-red-400">
-        <input
-          v-model="substitute"
-          placeholder="Replace"
-          type="text"
-          name="findText"
-          id="find-text"
-          class="border-blue-400 border-2"
-        />
-      </div>
+    <div class="2xl:flex 2xl:flex-row md:flex-col border-2 border-dashed border-red-400 gap-1">
+      <input
+        v-model="match"
+        placeholder="Find"
+        type="text"
+        name="findText"
+        id="find-text"
+        class="dark:bg-primary-700"
+      />
+      <input
+        v-model="substitute"
+        placeholder="Replace"
+        type="text"
+        name="findText"
+        id="find-text"
+        class="dark:bg-primary-700"
+      />
     </div>
-    <div class="grid grid-cols-2 justify-center items-center h-fit gap-1 bg-green-200">
+    <div class="2xl:flex md:grid md:grid-cols-2 justify-center shrink-0 items-center h-fit gap-1">
       <IconButton
         name="mdi:regex"
-        color="black"
+        class="rounded-sm dark:hover:bg-neutral-200/20 dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-neutral-200"
         @click="toggleRegEx()"
         :is-toggled="isRegEx"
         :class="{
-          'bg-green-400': isRegEx,
-          'bg-green-200': !isRegEx,
+          'dark:text-neutral-200 dark:bg-neutral-200/30': isRegEx,
         }"
       />
       <IconButton
         name="mdi:format-letter-case"
-        color="black"
+        class="rounded-sm dark:hover:bg-neutral-200/20 dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-neutral-200"
         @click="toggleCaseSensitive()"
         :is-toggled="isCaseSensitive"
         :class="{
-          'bg-green-400': isCaseSensitive,
-          'bg-green-200': !isCaseSensitive,
+          'dark:text-neutral-200 dark:bg-neutral-200/30': isCaseSensitive,
         }"
       />
       <IconButton
         name="material-symbols:match-word-rounded"
-        color="black"
+        class="rounded-sm dark:hover:bg-neutral-200/20 dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-neutral-200"
         @click="toggleWholeWord()"
         :is-toggled="isWholeWord"
         :class="{
-          'bg-green-400': isWholeWord,
-          'bg-green-200': !isWholeWord,
+          'dark:text-neutral-200 dark:bg-neutral-200/30': isWholeWord,
         }"
       />
       <IconButton
         name="codicon:replace-all"
-        color="black"
+        class="rounded-sm dark:hover:bg-neutral-200/20 dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-neutral-200"
         @click="toggleReplaceAll()"
         :is-toggled="isReplaceAll"
         :class="{
-          'bg-green-400': isReplaceAll,
-          'bg-green-200': !isReplaceAll,
+          'dark:text-neutral-200 dark:bg-neutral-200/30': isReplaceAll,
         }"
       />
     </div>
-    <IconButton name="mdi:plus-circle-outline" color="black" @click="createRule()" />
+    <IconButton
+      name="mdi:plus-circle-outline"
+      class="rounded-sm dark:hover:bg-neutral-200/20 dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-neutral-200"
+      @click="createRule()"
+    />
   </div>
 </template>

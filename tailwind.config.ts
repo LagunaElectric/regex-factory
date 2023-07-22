@@ -1,12 +1,20 @@
 import type { Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme"
 
-export default {
+export default <Partial<Config>>{
   content: ["./src/**/*.{vue,js,ts,jsx,tsx}", "./nuxt.config.{js,ts}", "content/**/**.md"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          700: "#2c2525",
+          900: "#211c1c",
+        },
+      },
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-} satisfies Config
+}
