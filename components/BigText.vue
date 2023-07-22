@@ -23,7 +23,7 @@ const value = computed({
   <div class="flex flex-col">
     <label v-if="props.label" for="textInput" class="dark:text-neutral-200">{{ props.label }}</label>
     <textarea
-      class="resize-none min-w-32 w-full h-full dark:bg-primary-700 dark:text-neutral-200 font-semibold tracking-wide rounded-sm p-2"
+      class="resize-none min-w-32 w-full h-full dark:bg-primary-700 dark:text-neutral-200 dark:border-neutral-200/80 border font-semibold tracking-wide rounded-sm p-2"
       name="input"
       id="textInput"
       cols="30"
