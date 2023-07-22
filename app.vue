@@ -35,7 +35,32 @@ useHead({
 const input = ref("")
 const output = ref("")
 
-const factoryRules = reactive<FactoryRuleProps[]>([])
+const factoryRules = reactive<FactoryRuleProps[]>([
+  {
+    match: "hello",
+    substitute: "world",
+    isRegEx: true,
+    isCaseSensitive: false,
+    isWholeWord: false,
+    isReplaceAll: false,
+  },
+  {
+    match: "world",
+    substitute: "hello",
+    isRegEx: true,
+    isCaseSensitive: false,
+    isWholeWord: false,
+    isReplaceAll: false,
+  },
+  {
+    match: 'this is a "test"',
+    substitute: "test",
+    isRegEx: false,
+    isCaseSensitive: false,
+    isWholeWord: false,
+    isReplaceAll: true,
+  },
+])
 
 function applyRules() {
   let result = input.value
@@ -55,13 +80,14 @@ function applyRules() {
 const genRuleKey = (rule: FactoryRuleProps, i: number) =>
   `${i}-${((rule.match.length * (rule.substitute.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(".", "")
 
-
 watch([input, factoryRules], applyRules)
 </script>
 
 <template>
   <!-- <span class="text-4xl font-bold self-center"><span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300 italic">RegEx</span>Factory</span> -->
-  <div class="h-[100vh] grid md:grid-cols-3 md:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200">
+  <div
+    class="h-[100vh] grid md:grid-cols-3 md:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
+  >
     <div class="flex flex-col overflow-auto">
       <RuleFactory
         class="border-2 border-orange-400 border-dashed justify-between sticky"

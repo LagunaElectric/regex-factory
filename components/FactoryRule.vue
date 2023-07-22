@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { createContext } from "vm"
+
 export interface FactoryRuleProps {
   match: string
   substitute: string
@@ -16,6 +18,18 @@ const emit = defineEmits([
   "update:isReplaceAll",
   "delete",
 ])
+
+const dummyLetter = ref<HTMLCanvasElement | null>(null)
+const ctx = computed(() => dummyLetter.value?.getContext("2d"))
+const letterWidth = computed(() => ctx.value?.measureText("a").width.toFixed(2))
+dummyLetter.value?.remove()
+
+const matchSpanRef = ref<HTMLSpanElement | null>(null)
+const substituteSpanRef = ref<HTMLSpanElement | null>(null)
+const { width: matchSpanWidth } = useElementSize(matchSpanRef)
+const { width: substituteSpanWidth } = useElementSize(substituteSpanRef)
+
+const isMatchOverflown = computed(() => matchSpanWidth.value > 200)
 
 const matchTruncated = computed(() => {
   if (props.match.length > 20) return props.match.slice(0, 20) + "..."
@@ -49,12 +63,16 @@ const requestDelete = () => {
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="">
+    <canvas hidden class="font-mono" ref="dummyLetter" />
+    <span>{{ letterWidth }} {{ matchSpanWidth }} {{ substituteSpanWidth }}</span>
     <div class="flex gap-1 items-center">
       <!-- TODO: Truncate text at a certain length. -->
-      <span class="font-mono text-sm">{{ matchTruncated }}</span>
+      <span ref="matchSpanRef" class="font-mono text-sm grow-0 border border-red-400">{{ props.match }}</span>
       <span class="text-gray-300"> → </span>
-      <span class="font-mono text-sm">{{ substituteTruncated || '""' }}</span>
+      <span ref="substituteSpanRef" class="font-mono text-sm border border-red-400">{{
+        substituteTruncated || '""'
+      }}</span>
     </div>
     <div class="flex gap-1">
       <IconButton
