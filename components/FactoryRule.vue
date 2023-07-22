@@ -19,25 +19,34 @@ const emit = defineEmits([
   "delete",
 ])
 
-const dummyLetter = ref<HTMLCanvasElement | null>(null)
-const ctx = computed(() => dummyLetter.value?.getContext("2d"))
-const letterWidth = computed(() => ctx.value?.measureText("a").width.toFixed(2))
-dummyLetter.value?.remove()
+const dummyLetter = ref<HTMLSpanElement | null>(null)
+const { width: letterWidth } = useElementSize(dummyLetter)
 
 const matchSpanRef = ref<HTMLSpanElement | null>(null)
 const substituteSpanRef = ref<HTMLSpanElement | null>(null)
-const { width: matchSpanWidth } = useElementSize(matchSpanRef)
-const { width: substituteSpanWidth } = useElementSize(substituteSpanRef)
 
-const isMatchOverflown = computed(() => matchSpanWidth.value > 200)
+const { width: matchSpanWidth } = useElementSize(matchSpanRef)
+const matchSpanWidthInChars = computed(() => {
+  if (!letterWidth.value) return 0
+  return Math.floor(matchSpanWidth.value / letterWidth.value)
+})
+
+const { width: substituteSpanWidth } = useElementSize(substituteSpanRef)
+const substituteSpanWidthInChars = computed(() => {
+  if (!letterWidth.value) return 0
+  return Math.floor(substituteSpanWidth.value / letterWidth.value)
+})
+
+const isMatchOverflown = computed(() => matchSpanWidthInChars.value < props.match.length)
+const isSubstituteOverflown = computed(() => substituteSpanWidth.value > 200)
 
 const matchTruncated = computed(() => {
-  if (props.match.length > 20) return props.match.slice(0, 20) + "..."
+  if (isMatchOverflown.value) return props.match.slice(0, matchSpanWidthInChars.value - 3) + "..."
   return props.match
 })
 
 const substituteTruncated = computed(() => {
-  if (props.substitute.length > 20) return props.substitute.slice(0, 20) + "..."
+  if (isSubstituteOverflown) return props.substitute.slice(0, substituteSpanWidthInChars.value) + "..."
   return props.substitute
 })
 
@@ -63,18 +72,16 @@ const requestDelete = () => {
 </script>
 
 <template>
-  <div class="">
-    <canvas hidden class="font-mono" ref="dummyLetter" />
-    <span>{{ letterWidth }} {{ matchSpanWidth }} {{ substituteSpanWidth }}</span>
-    <div class="flex gap-1 items-center">
+  <div class="flex max-w-full justify-between min-w-0 break-all relative">
+    <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
+    <!-- <span>{{ letterWidth }} {{ matchSpanWidth }} {{ substituteSpanWidth }}</span> -->
+    <div class="flex gap-2 items-center grow">
       <!-- TODO: Truncate text at a certain length. -->
-      <span ref="matchSpanRef" class="font-mono text-sm grow-0 border border-red-400">{{ props.match }}</span>
-      <span class="text-gray-300"> → </span>
-      <span ref="substituteSpanRef" class="font-mono text-sm border border-red-400">{{
-        substituteTruncated || '""'
-      }}</span>
+      <span ref="matchSpanRef" class="font-mono text-sm grow basis-1">{{ matchTruncated }}</span>
+      <span class="text-gray-300 grow-0 shrink-0"> → </span>
+      <span ref="substituteSpanRef" class="font-mono grow text-sm basis-1">{{ substituteTruncated }}</span>
     </div>
-    <div class="flex gap-1">
+    <div class="flex gap-1 shrink-0">
       <IconButton
         name="mdi:regex"
         :class="{
