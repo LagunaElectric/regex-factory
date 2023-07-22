@@ -52,10 +52,15 @@ function applyRules() {
   output.value = result
 }
 
+const genRuleKey = (rule: FactoryRuleProps, i: number) =>
+  `${i}-${((rule.match.length * (rule.substitute.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(".", "")
+
+
 watch([input, factoryRules], applyRules)
 </script>
 
 <template>
+  <!-- <span class="text-4xl font-bold self-center"><span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300 italic">RegEx</span>Factory</span> -->
   <div class="h-[100vh] grid md:grid-cols-3 md:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200">
     <div class="flex flex-col overflow-auto">
       <RuleFactory
@@ -65,12 +70,7 @@ watch([input, factoryRules], applyRules)
       <FactoryRule
         v-for="(rule, i) in factoryRules"
         class="border-2 border-purple-400 border-dashed"
-        :key="
-          `${i}-${((rule.match.length * (rule.substitute.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(
-            '.',
-            '',
-          )
-        "
+        :key="genRuleKey(rule, i)"
         v-bind="rule"
         @update:is-reg-ex="(val) => (rule.isRegEx = val)"
         @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"

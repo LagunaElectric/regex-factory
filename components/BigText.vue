@@ -29,6 +29,7 @@ const value = computed({
       cols="30"
       rows="10"
       autocomplete="off"
+      spellcheck="false"
       v-model="value"
     ></textarea>
   </div>
