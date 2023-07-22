@@ -11,6 +11,9 @@ export default <Partial<Config>>{
           900: "#211c1c",
         },
       },
+      screens: {
+        md: "856px",
+      },
     },
   },
   variants: {

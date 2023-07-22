@@ -56,12 +56,10 @@ watch([input, factoryRules], applyRules)
 </script>
 
 <template>
-  <div class="h-[100vh] grid grid-cols-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200">
-    <!-- <NuxtWelcome /> -->
-    <BigText label="Input:" class="h-full inline-block p-2 sticky" v-model="input" />
-    <div class="flex flex-col grow">
+  <div class="h-[100vh] grid md:grid-cols-3 md:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200">
+    <div class="flex flex-col overflow-auto">
       <RuleFactory
-        class="border-2 border-orange-400 border-dashed justify-between"
+        class="border-2 border-orange-400 border-dashed justify-between sticky"
         @rule-created="(rule) => factoryRules.push(rule)"
       />
       <FactoryRule
@@ -81,6 +79,7 @@ watch([input, factoryRules], applyRules)
         @delete="() => factoryRules.splice(i, 1)"
       />
     </div>
-    <BigText label="Output:" class="h-full p-2 inline-block" v-model="output" />
+    <BigText label="Input:" class="h-full p-2 md:order-first" v-model="input" />
+    <BigText label="Output:" class="h-full p-2" v-model="output" />
   </div>
 </template>

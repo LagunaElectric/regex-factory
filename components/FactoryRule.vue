@@ -17,6 +17,16 @@ const emit = defineEmits([
   "delete",
 ])
 
+const matchTruncated = computed(() => {
+  if (props.match.length > 20) return props.match.slice(0, 20) + "..."
+  return props.match
+})
+
+const substituteTruncated = computed(() => {
+  if (props.substitute.length > 20) return props.substitute.slice(0, 20) + "..."
+  return props.substitute
+})
+
 const toggleRegEx = () => {
   emit("update:isRegEx", !props.isRegEx)
 }
@@ -40,11 +50,11 @@ const requestDelete = () => {
 
 <template>
   <div class="flex justify-between">
-    <div class="flex gap-1">
+    <div class="flex gap-1 items-center">
       <!-- TODO: Truncate text at a certain length. -->
-      <span>{{ props.match }}</span>
+      <span class="font-mono text-sm">{{ matchTruncated }}</span>
       <span class="text-gray-300"> → </span>
-      <span>{{ props.substitute || '""' }}</span>
+      <span class="font-mono text-sm">{{ substituteTruncated || '""' }}</span>
     </div>
     <div class="flex gap-1">
       <IconButton
