@@ -1,9 +1,8 @@
 <script setup lang="ts">
+import { ReplaceRule } from "utils/ReplaceRule"
 import { createContext } from "vm"
 
-export interface FactoryRuleProps {
-  match: string
-  substitute: string
+export interface FactoryRuleProps extends ReplaceRule {
   isRegEx: boolean
   isCaseSensitive: boolean
   isWholeWord: boolean
@@ -23,7 +22,7 @@ const dummyLetter = ref<HTMLSpanElement | null>(null)
 const { width: letterWidth } = useElementSize(dummyLetter)
 
 const matchSpanRef = ref<HTMLSpanElement | null>(null)
-const substituteSpanRef = ref<HTMLSpanElement | null>(null)
+const substitutionSpanRef = ref<HTMLSpanElement | null>(null)
 
 const { width: matchSpanWidth } = useElementSize(matchSpanRef)
 const matchSpanWidthInChars = computed(() => {
@@ -31,23 +30,23 @@ const matchSpanWidthInChars = computed(() => {
   return Math.floor(matchSpanWidth.value / letterWidth.value)
 })
 
-const { width: substituteSpanWidth } = useElementSize(substituteSpanRef)
-const substituteSpanWidthInChars = computed(() => {
+const { width: substitutionSpanWidth } = useElementSize(substitutionSpanRef)
+const substitutionSpanWidthInChars = computed(() => {
   if (!letterWidth.value) return 0
-  return Math.floor(substituteSpanWidth.value / letterWidth.value)
+  return Math.floor(substitutionSpanWidth.value / letterWidth.value)
 })
 
 const isMatchOverflown = computed(() => matchSpanWidthInChars.value < props.match.length)
-const isSubstituteOverflown = computed(() => substituteSpanWidthInChars.value < props.substitute.length)
+const isSubstitutionOverflown = computed(() => substitutionSpanWidthInChars.value < props.substitution.length)
 
 const matchTruncated = computed(() => {
   if (isMatchOverflown.value) return props.match.slice(0, matchSpanWidthInChars.value - 3) + "..."
   return props.match
 })
 
-const substituteTruncated = computed(() => {
-  if (isSubstituteOverflown.value) return props.substitute.slice(0, substituteSpanWidthInChars.value) + "..."
-  return props.substitute
+const substitutionTruncated = computed(() => {
+  if (isSubstitutionOverflown.value) return props.substitution.slice(0, substitutionSpanWidthInChars.value) + "..."
+  return props.substitution
 })
 
 const toggleRegEx = () => {
@@ -74,12 +73,12 @@ const requestDelete = () => {
 <template>
   <div class="flex max-w-full justify-between min-w-0 break-all relative">
     <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
-    <!-- <span>{{ letterWidth }} {{ matchSpanWidth }} {{ substituteSpanWidth }}</span> -->
+    <!-- <span>{{ letterWidth }} {{ matchSpanWidth }} {{ substitutionSpanWidth }}</span> -->
     <div class="flex gap-2 items-center grow">
       <!-- TODO: Truncate text at a certain length. -->
       <span ref="matchSpanRef" class="font-mono text-sm grow basis-1">{{ matchTruncated }}</span>
       <span class="text-gray-300 grow-0 shrink-0"> → </span>
-      <span ref="substituteSpanRef" class="font-mono grow text-sm basis-1">{{ substituteTruncated }}</span>
+      <span ref="substitutionSpanRef" class="font-mono grow text-sm basis-1">{{ substitutionTruncated }}</span>
     </div>
     <div class="flex gap-1 shrink-0">
       <IconButton

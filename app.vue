@@ -38,7 +38,7 @@ const output = ref("")
 const factoryRules = reactive<FactoryRuleProps[]>([
   {
     match: "hello",
-    substitute: "world",
+    substitution: "world",
     isRegEx: true,
     isCaseSensitive: false,
     isWholeWord: false,
@@ -46,7 +46,7 @@ const factoryRules = reactive<FactoryRuleProps[]>([
   },
   {
     match: "world",
-    substitute: "hello",
+    substitution: "hello",
     isRegEx: true,
     isCaseSensitive: false,
     isWholeWord: false,
@@ -54,7 +54,7 @@ const factoryRules = reactive<FactoryRuleProps[]>([
   },
   {
     match: 'this is a "test"',
-    substitute: "test",
+    substitution: "test",
     isRegEx: false,
     isCaseSensitive: false,
     isWholeWord: false,
@@ -63,22 +63,12 @@ const factoryRules = reactive<FactoryRuleProps[]>([
 ])
 
 function applyRules() {
-  let result = input.value
-  for (const rule of factoryRules) {
-    let match = rule.match
-    if (!rule.isRegEx) match = match.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")
-    match = rule.isWholeWord ? `\\b${match}\\b` : match
-    let flags = "m"
-    if (!rule.isCaseSensitive) flags += "i"
-    if (rule.isReplaceAll) flags += "g"
-    const regex = new RegExp(match, flags)
-    result = result.replace(regex, rule.substitute)
-  }
-  output.value = result
+  const regexFactory = new RegExFactory(factoryRules)
+  output.value = regexFactory.process(input.value)
 }
 
 const genRuleKey = (rule: FactoryRuleProps, i: number) =>
-  `${i}-${((rule.match.length * (rule.substitute.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(".", "")
+  `${i}-${((rule.match.length * (rule.substitution.length || 1.68)) / 2) * rule.match.charCodeAt(0)}`.replace(".", "")
 
 watch([input, factoryRules], applyRules)
 </script>
