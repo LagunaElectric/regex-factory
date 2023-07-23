@@ -86,7 +86,7 @@ watch([input, factoryRules], applyRules)
 <template>
   <!-- <span class="text-4xl font-bold self-center"><span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300 italic">RegEx</span>Factory</span> -->
   <div
-    class="h-[100vh] grid md:grid-cols-3 md:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
+    class="h-[100vh] grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
   >
     <div class="flex flex-col overflow-auto">
       <RuleFactory
@@ -105,7 +105,7 @@ watch([input, factoryRules], applyRules)
         @delete="() => factoryRules.splice(i, 1)"
       />
     </div>
-    <BigText label="Input:" class="h-full p-2 md:order-first" v-model="input" />
+    <BigText label="Input:" class="h-full p-2 lg:order-first" v-model="input" />
     <BigText label="Output:" class="h-full p-2" v-model="output" />
   </div>
 </template>
