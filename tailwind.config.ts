@@ -9,8 +9,9 @@ export default <Partial<Config>>{
         primary: {
           500: "#403838",
           700: "#2c2525",
-          900: "#211c1c",
-          950: "#191515",
+          800: "#211c1c",
+          850: "#201B1B",
+          900: "#191515",
           border: "#72696A",
           icon: "#FFF0F3",
           active: "#5B5353",

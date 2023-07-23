@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "regex-factory",
   "private": true,
   "scripts": {
     "build": "nuxt build",

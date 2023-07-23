@@ -77,11 +77,11 @@ watch([input, factoryRules], applyRules)
   <div class="flex flex-col h-[100vh]">
     <Header />
     <div
-      class="grow grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
+      class="grow grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-800 dark:text-neutral-200"
     >
       <div class="flex flex-col overflow-auto gap-1">
         <RuleFactory
-          class="justify-between sticky top-0 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
+          class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
           @rule-created="(rule) => factoryRules.push(rule)"
         />
         <FactoryRule
