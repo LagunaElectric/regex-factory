@@ -24,8 +24,5 @@
     "nuxt-icon": "^0.4.2",
     "nuxt-mongoose": "^0.0.9",
     "prettier": "^3.0.0"
-  },
-  "dependencies": {
-    "@gathertown/gather-game-client": "^42.0.0"
   }
 }
