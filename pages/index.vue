@@ -75,27 +75,31 @@ watch([input, factoryRules], applyRules)
 
 <template>
   <!-- <span class="text-4xl font-bold self-center"><span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300 italic">RegEx</span>Factory</span> -->
-  <div
-    class="h-[100vh] grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
-  >
-    <div class="flex flex-col overflow-auto gap-1">
-      <RuleFactory
-        class="justify-between sticky top-0 z-10 dark:bg-primary-900"
-        @rule-created="(rule) => factoryRules.push(rule)"
-      />
-      <FactoryRule
-        v-for="(rule, i) in factoryRules"
-        class="mx-1 px-1 text-lg dark:bg-primary-500 rounded-sm border dark:border-primary-border"
-        :key="genRuleKey(rule, i)"
-        v-bind="rule"
-        @update:is-reg-ex="(val) => (rule.isRegEx = val)"
-        @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
-        @update:is-whole-word="(val) => (rule.isWholeWord = val)"
-        @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
-        @delete="() => factoryRules.splice(i, 1)"
-      />
+  <div class="flex flex-col h-[100vh]">
+    <div
+      class="grow grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
+    >
+      <div class="flex flex-col overflow-auto gap-1">
+        <RuleFactory
+          class="justify-between sticky top-0 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
+          @rule-created="(rule) => factoryRules.push(rule)"
+        />
+        <FactoryRule
+          v-for="(rule, i) in factoryRules"
+          class="px-1 text-lg dark:bg-primary-500 rounded-sm border dark:border-primary-border"
+          :key="genRuleKey(rule, i)"
+          v-bind="rule"
+          @update:is-reg-ex="(val) => (rule.isRegEx = val)"
+          @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
+          @update:is-whole-word="(val) => (rule.isWholeWord = val)"
+          @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
+          @delete="() => factoryRules.splice(i, 1)"
+        />
+      </div>
+      <BigText label="Input:" class="h-full p-2 lg:order-first" v-model="input" />
+      <BigText label="Output:" class="h-full p-2" v-model="output" />
     </div>
-    <BigText label="Input:" class="h-full p-2 lg:order-first" v-model="input" />
-    <BigText label="Output:" class="h-full p-2" v-model="output" />
+    <Footer />
   </div>
 </template>
+ß
