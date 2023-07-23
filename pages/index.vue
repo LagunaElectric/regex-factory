@@ -74,8 +74,8 @@ watch([input, factoryRules], applyRules)
 </script>
 
 <template>
-  <!-- <span class="text-4xl font-bold self-center"><span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300 italic">RegEx</span>Factory</span> -->
   <div class="flex flex-col h-[100vh]">
+    <Header />
     <div
       class="grow grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
     >
