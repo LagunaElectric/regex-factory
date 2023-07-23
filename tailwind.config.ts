@@ -7,8 +7,13 @@ export default <Partial<Config>>{
     extend: {
       colors: {
         primary: {
+          500: "#403838",
           700: "#2c2525",
           900: "#211c1c",
+          950: "#191515",
+          border: "#72696A",
+          icon: "#FFF0F3",
+          active: "#5B5353",
         },
       },
       screens: {

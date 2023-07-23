@@ -78,14 +78,14 @@ watch([input, factoryRules], applyRules)
   <div
     class="h-[100vh] grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-900 dark:text-neutral-200"
   >
-    <div class="flex flex-col overflow-auto">
+    <div class="flex flex-col overflow-auto gap-1">
       <RuleFactory
-        class="border-2 border-orange-400 border-dashed justify-between sticky"
+        class="justify-between sticky top-0 z-10 dark:bg-primary-900"
         @rule-created="(rule) => factoryRules.push(rule)"
       />
       <FactoryRule
         v-for="(rule, i) in factoryRules"
-        class="border-2 border-purple-400 border-dashed"
+        class="mx-1 px-1 text-lg dark:bg-primary-500 rounded-sm border dark:border-primary-border"
         :key="genRuleKey(rule, i)"
         v-bind="rule"
         @update:is-reg-ex="(val) => (rule.isRegEx = val)"

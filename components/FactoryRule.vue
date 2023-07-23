@@ -40,12 +40,13 @@ const isMatchOverflown = computed(() => matchSpanWidthInChars.value < props.matc
 const isSubstitutionOverflown = computed(() => substitutionSpanWidthInChars.value < props.substitution.length)
 
 const matchTruncated = computed(() => {
-  if (isMatchOverflown.value) return props.match.slice(0, matchSpanWidthInChars.value - 3) + "..."
+  if (isMatchOverflown.value) return props.match.slice(0, matchSpanWidthInChars.value - 3).trim() + "..."
   return props.match
 })
 
 const substitutionTruncated = computed(() => {
-  if (isSubstitutionOverflown.value) return props.substitution.slice(0, substitutionSpanWidthInChars.value) + "..."
+  if (isSubstitutionOverflown.value)
+    return props.substitution.slice(0, substitutionSpanWidthInChars.value).trim() + "..."
   return props.substitution
 })
 
@@ -73,47 +74,41 @@ const requestDelete = () => {
 <template>
   <div class="flex max-w-full justify-between min-w-0 break-all relative">
     <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
-    <!-- <span>{{ letterWidth }} {{ matchSpanWidth }} {{ substitutionSpanWidth }}</span> -->
     <div class="flex gap-2 items-center grow">
-      <!-- TODO: Truncate text at a certain length. -->
       <span ref="matchSpanRef" class="font-mono text-sm grow basis-1">{{ matchTruncated }}</span>
       <span class="text-gray-300 grow-0 shrink-0"> → </span>
       <span ref="substitutionSpanRef" class="font-mono grow text-sm basis-1">{{ substitutionTruncated }}</span>
     </div>
-    <div class="flex gap-1 shrink-0">
+    <div class="flex gap-1 shrink-0 dark:text-primary-icon">
       <IconButton
         name="mdi:regex"
         :class="{
-          'text-blue-600': props.isRegEx,
-          'text-gray-300': !props.isRegEx,
+          'dark:bg-primary-active': props.isRegEx,
         }"
         @click="toggleRegEx"
       />
       <IconButton
         name="mdi:format-letter-case"
         :class="{
-          'text-blue-600': props.isCaseSensitive,
-          'text-gray-300': !props.isCaseSensitive,
+          'dark:bg-primary-active': props.isCaseSensitive,
         }"
         @click="toggleCaseSensitive"
       />
       <IconButton
         name="material-symbols:match-word-rounded"
         :class="{
-          'text-blue-600': props.isWholeWord,
-          'text-gray-300': !props.isWholeWord,
+          'dark:bg-primary-active': props.isWholeWord,
         }"
         @click="toggleWholeWord"
       />
       <IconButton
         name="codicon:replace-all"
         :class="{
-          'text-blue-600': props.isReplaceAll,
-          'text-gray-300': !props.isReplaceAll,
+          'dark:bg-primary-active': props.isReplaceAll,
         }"
         @click="toggleReplaceAll"
       />
-      <IconButton name="mdi:delete-outline" class="text-red-300" @click="requestDelete" />
+      <IconButton name="mdi:delete-outline" class="text-red-400" @click="requestDelete" />
     </div>
   </div>
 </template>
