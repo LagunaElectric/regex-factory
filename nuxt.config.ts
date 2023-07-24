@@ -8,5 +8,11 @@ export default defineNuxtConfig({
     "nuxt-mongoose",
     "@vueuse/nuxt",
     "nuxt-icon",
+    "@nuxtjs/google-fonts",
   ],
+  googleFonts: {
+    families: {
+      "Fira+Code": true,
+    },
+  },
 })

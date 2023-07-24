@@ -18,7 +18,12 @@ export default <Partial<Config>>{
         },
       },
       screens: {
+        xxs: "320px",
+        xs: "475px",
         md: "856px",
+      },
+      fontFamily: {
+        mono: ["Operator Mono", "Fira Code", ...defaultTheme.fontFamily.mono],
       },
     },
   },
