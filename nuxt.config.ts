@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/devtools",
     "@nuxtjs/color-mode",
-    "nuxt-mongoose",
     "@vueuse/nuxt",
     "nuxt-icon",
     "@nuxtjs/google-fonts",

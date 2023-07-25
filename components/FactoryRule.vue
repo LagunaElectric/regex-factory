@@ -72,7 +72,7 @@ const requestDelete = () => {
 </script>
 
 <template>
-  <div class="flex max-w-full justify-between min-w-0 break-all relative">
+  <div class="flex max-w-full justify-between items-center py-1 min-w-0 break-all relative">
     <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
     <div class="flex gap-2 items-center grow">
       <span ref="matchSpanRef" class="font-mono text-sm grow basis-1">{{ matchTruncated }}</span>

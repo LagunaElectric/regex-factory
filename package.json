@@ -23,7 +23,6 @@
     "eslint-plugin-vue": "^9.15.1",
     "nuxt": "^3.6.5",
     "nuxt-icon": "^0.4.2",
-    "nuxt-mongoose": "^0.0.9",
     "prettier": "^3.0.0"
   }
 }
