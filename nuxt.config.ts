@@ -16,4 +16,7 @@ export default defineNuxtConfig({
       "Fira+Sans": true,
     },
   },
+  colorMode: {
+    classSuffix: "",
+  },
 })

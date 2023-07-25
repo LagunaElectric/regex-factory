@@ -59,7 +59,7 @@ function createRule() {
         type="text"
         name="findText"
         id="find-text"
-        class="dark:bg-primary-700 dark:border-primary-border rounded-sm border grow"
+        class="bg-primary-light-700 dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
       <input
         v-model="substitution"
@@ -67,53 +67,53 @@ function createRule() {
         type="text"
         name="findText"
         id="find-text"
-        class="dark:bg-primary-700 dark:border-primary-border rounded-sm border grow"
+        class="bg-primary-light-700 dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
     </div>
     <div class="flex w-full 2xl:w-auto justify-between 2xl:justify-normal">
       <div
-        class="2xl:grid 2xl:grid-cols-2 flex justify-center shrink-0 items-center h-fit gap-1 dark:text-primary-icon"
+        class="2xl:grid 2xl:grid-cols-2 flex justify-center shrink-0 items-center h-fit gap-1 dark:text-primary-dark-icon"
       >
         <IconButton
           name="mdi:regex"
-          class="rounded-sm dark:hover:bg-primary-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleRegEx()"
           :is-toggled="isRegEx"
           :class="{
-            'dark:bg-primary-active': isRegEx,
+            'dark:bg-primary-dark-active': isRegEx,
           }"
         />
         <IconButton
           name="mdi:format-letter-case"
-          class="rounded-sm dark:hover:bg-primary-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleCaseSensitive()"
           :is-toggled="isCaseSensitive"
           :class="{
-            'dark:bg-primary-active': isCaseSensitive,
+            'dark:bg-primary-dark-active': isCaseSensitive,
           }"
         />
         <IconButton
           name="material-symbols:match-word-rounded"
-          class="rounded-sm dark:hover:bg-primary-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleWholeWord()"
           :is-toggled="isWholeWord"
           :class="{
-            'dark:bg-primary-active': isWholeWord,
+            'dark:bg-primary-dark-active': isWholeWord,
           }"
         />
         <IconButton
           name="codicon:replace-all"
-          class="rounded-sm dark:hover:bg-primary-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleReplaceAll()"
           :is-toggled="isReplaceAll"
           :class="{
-            'dark:bg-primary-active': isReplaceAll,
+            'dark:bg-primary-dark-active': isReplaceAll,
           }"
         />
       </div>
       <IconButton
         name="mdi:plus-circle-outline"
-        class="rounded-sm h-full self-center dark:hover:bg-primary-active dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-primary-icon"
+        class="rounded-sm h-full self-center dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-primary-dark-icon"
         @click="createRule()"
       />
     </div>

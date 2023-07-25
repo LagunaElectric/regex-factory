@@ -76,35 +76,35 @@ const requestDelete = () => {
     <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
     <div class="flex gap-2 items-center grow">
       <span ref="matchSpanRef" class="font-mono text-sm grow basis-1">{{ matchTruncated }}</span>
-      <span class="text-gray-300 grow-0 shrink-0"> → </span>
+      <span class="dark:text-gray-300 text-primary-light-icon grow-0 shrink-0"> → </span>
       <span ref="substitutionSpanRef" class="font-mono grow text-sm basis-1">{{ substitutionTruncated }}</span>
     </div>
-    <div class="flex gap-1 shrink-0 dark:text-primary-icon">
+    <div class="flex gap-1 shrink-0 dark:text-primary-dark-icon">
       <IconButton
         name="mdi:regex"
         :class="{
-          'dark:bg-primary-active': props.isRegEx,
+          'dark:bg-primary-dark-active': props.isRegEx,
         }"
         @click="toggleRegEx"
       />
       <IconButton
         name="mdi:format-letter-case"
         :class="{
-          'dark:bg-primary-active': props.isCaseSensitive,
+          'dark:bg-primary-dark-active': props.isCaseSensitive,
         }"
         @click="toggleCaseSensitive"
       />
       <IconButton
         name="material-symbols:match-word-rounded"
         :class="{
-          'dark:bg-primary-active': props.isWholeWord,
+          'dark:bg-primary-dark-active': props.isWholeWord,
         }"
         @click="toggleWholeWord"
       />
       <IconButton
         name="codicon:replace-all"
         :class="{
-          'dark:bg-primary-active': props.isReplaceAll,
+          'dark:bg-primary-dark-active': props.isReplaceAll,
         }"
         @click="toggleReplaceAll"
       />

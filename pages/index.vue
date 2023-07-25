@@ -32,6 +32,10 @@ useHead({
   ],
 })
 
+// definePageMeta({
+//   colorMode: "light",
+// })
+
 const input = ref("")
 const output = ref("")
 
@@ -50,29 +54,31 @@ watch([input, factoryRules], applyRules)
 </script>
 
 <template>
-  <div class="flex flex-col h-screen max-h-screen">
+  <div
+    class="flex flex-col h-screen max-h-screen text-primary-light-icon dark:text-primary-dark-icon border-primary-light-border dark:border-primary-dark-border"
+  >
     <Header class="" />
     <div
-      class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-2 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-800 dark:text-neutral-200"
+      class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-2 grid-rows-3 gap-1 justify-stretch items-stretch bg-primary-light-900 dark:bg-primary-dark-800 dark:text-neutral-200"
     >
       <div class="relative h-full lg:row-span-2">
         <div class="absolute inset-0 flex flex-col overflow-auto gap-1 px-2 pb-2">
           <RuleFactory
-            class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
+            class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-dark-700 rounded-sm p-1 border border-primary-light-border dark:border-primary-dark-border"
             @rule-created="(rule) => factoryRules.push(rule)"
           />
           <div class="overflow-auto shrink">
-              <FactoryRule
+            <FactoryRule
               v-for="(rule, i) in factoryRules"
-                class="px-1 mb-1 text-lg dark:bg-primary-500 rounded-sm border dark:border-primary-border"
-                v-bind="rule"
-                :key="genRuleKey(rule, i)"
-                @update:is-reg-ex="(val) => (rule.isRegEx = val)"
-                @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
-                @update:is-whole-word="(val) => (rule.isWholeWord = val)"
-                @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
-                @delete="() => factoryRules.splice(i, 1)"
-              />
+              class="px-1 mb-1 text-lg dark:bg-primary-dark-500 rounded-sm border border-primary-light-border dark:border-primary-dark-border"
+              v-bind="rule"
+              :key="genRuleKey(rule, i)"
+              @update:is-reg-ex="(val) => (rule.isRegEx = val)"
+              @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
+              @update:is-whole-word="(val) => (rule.isWholeWord = val)"
+              @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
+              @delete="() => factoryRules.splice(i, 1)"
+            />
           </div>
         </div>
       </div>
