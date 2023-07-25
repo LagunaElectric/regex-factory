@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="flex justify-between px-2 h-5 text-xs dark:bg-primary-850 dark:text-[#72696A] items-center dark:border-t dark:border-black"
+    class="flex justify-center xs:justify-between px-2 h-5 text-xs dark:bg-primary-850 dark:text-[#72696A] items-center dark:border-t dark:border-black"
   >
     <div class="hidden sm:block">
       <!-- <span>© Ronald Jimmy Headrick III 2023. All rights reserved.</span> -->
@@ -14,7 +14,7 @@
         <Icon name="twemoji:red-heart" />, <Icon name="devicon:vuejs" />, and <Icon name="logos:nuxt-icon" />.
       </span>
     </div>
-    <div>
+    <div class="hidden xs:block">
       <span>Try exploring other tools or make something satirical.</span>
     </div>
   </div>

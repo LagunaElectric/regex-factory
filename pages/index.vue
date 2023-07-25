@@ -53,9 +53,9 @@ watch([input, factoryRules], applyRules)
   <div class="flex flex-col h-screen max-h-screen">
     <Header class="" />
     <div
-      class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-800 dark:text-neutral-200"
+      class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-2 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-800 dark:text-neutral-200"
     >
-      <div class="relative h-full">
+      <div class="relative h-full lg:row-span-2">
         <div class="absolute inset-0 flex flex-col overflow-auto gap-1 px-2 pb-2">
           <RuleFactory
             class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
@@ -76,8 +76,8 @@ watch([input, factoryRules], applyRules)
           </div>
         </div>
       </div>
-      <BigText label="Input:" class="lg:py-2 px-2 lg:order-first" v-model="input" />
-      <BigText label="Output:" class="lg:py-2 px-2" v-model="output" />
+      <BigText label="Input:" class="lg:py-2 px-2 lg:col-span-2" v-model="input" />
+      <BigText label="Output:" class="lg:py-2 px-2 lg:col-span-2" v-model="output" />
     </div>
     <Footer />
   </div>
