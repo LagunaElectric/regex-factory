@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       "Fira+Code": true,
+      "Fira+Sans": true,
     },
   },
 })

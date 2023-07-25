@@ -4,7 +4,7 @@
   <div
     class="flex justify-between px-2 h-5 text-xs dark:bg-primary-850 dark:text-[#72696A] items-center dark:border-t dark:border-black"
   >
-    <div>
+    <div class="hidden sm:block">
       <!-- <span>© Ronald Jimmy Headrick III 2023. All rights reserved.</span> -->
       <span>I'm not sure what to put here.</span>
     </div>

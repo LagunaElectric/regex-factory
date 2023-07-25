@@ -35,33 +35,9 @@ useHead({
 const input = ref("")
 const output = ref("")
 
-const factoryRules = reactive<FactoryRuleProps[]>([
-  {
-    match: "hello",
-    substitution: "world",
-    isRegEx: true,
-    isCaseSensitive: false,
-    isWholeWord: false,
-    isReplaceAll: false,
-  },
-  {
-    match: "world",
-    substitution: "hello",
-    isRegEx: true,
-    isCaseSensitive: false,
-    isWholeWord: false,
-    isReplaceAll: false,
-  },
-  {
-    match: 'this is a "test"',
-    substitution: "test",
-    isRegEx: false,
-    isCaseSensitive: false,
-    isWholeWord: false,
-    isReplaceAll: true,
-  },
-])
+const factoryRules = reactive<FactoryRuleProps[]>([])
 
+Math.random()
 function applyRules() {
   const regexFactory = new RegExFactory(factoryRules)
   output.value = regexFactory.process(input.value)
@@ -74,32 +50,45 @@ watch([input, factoryRules], applyRules)
 </script>
 
 <template>
-  <div class="flex flex-col h-[100vh]">
-    <Header />
+  <div class="flex flex-col h-screen max-h-screen">
+    <Header class="" />
     <div
-      class="grow grid lg:grid-cols-3 lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-800 dark:text-neutral-200"
+      class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-1 grid-rows-3 gap-1 justify-stretch items-stretch dark:bg-primary-800 dark:text-neutral-200"
     >
-      <div class="flex flex-col overflow-auto gap-1">
-        <RuleFactory
-          class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
-          @rule-created="(rule) => factoryRules.push(rule)"
-        />
-        <FactoryRule
-          v-for="(rule, i) in factoryRules"
-          class="px-1 text-lg dark:bg-primary-500 rounded-sm border dark:border-primary-border"
-          :key="genRuleKey(rule, i)"
-          v-bind="rule"
-          @update:is-reg-ex="(val) => (rule.isRegEx = val)"
-          @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
-          @update:is-whole-word="(val) => (rule.isWholeWord = val)"
-          @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
-          @delete="() => factoryRules.splice(i, 1)"
-        />
+      <div class="relative h-full">
+        <div class="absolute inset-0 flex flex-col overflow-auto gap-1 px-2 pb-2">
+          <RuleFactory
+            class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-700 rounded-sm p-1 border dark:border-primary-border"
+            @rule-created="(rule) => factoryRules.push(rule)"
+          />
+          <div class="overflow-auto shrink">
+              <FactoryRule
+              v-for="(rule, i) in factoryRules"
+                class="px-1 mb-1 text-lg dark:bg-primary-500 rounded-sm border dark:border-primary-border"
+                v-bind="rule"
+                :key="genRuleKey(rule, i)"
+                @update:is-reg-ex="(val) => (rule.isRegEx = val)"
+                @update:is-case-sensitive="(val) => (rule.isCaseSensitive = val)"
+                @update:is-whole-word="(val) => (rule.isWholeWord = val)"
+                @update:is-replace-all="(val) => (rule.isReplaceAll = val)"
+                @delete="() => factoryRules.splice(i, 1)"
+              />
+          </div>
+        </div>
       </div>
-      <BigText label="Input:" class="h-full p-2 lg:order-first" v-model="input" />
-      <BigText label="Output:" class="h-full p-2" v-model="output" />
+      <BigText label="Input:" class="lg:py-2 px-2 lg:order-first" v-model="input" />
+      <BigText label="Output:" class="lg:py-2 px-2" v-model="output" />
     </div>
     <Footer />
   </div>
 </template>
-ß
+
+<style>
+body {
+  height: 100vh;
+}
+
+#__nuxt {
+  height: 100vh;
+}
+</style>

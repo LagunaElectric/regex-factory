@@ -24,6 +24,7 @@ export default <Partial<Config>>{
       },
       fontFamily: {
         mono: ["Operator Mono", "Fira Code", ...defaultTheme.fontFamily.mono],
+        brand: ["Fira Sans"],
       },
     },
   },

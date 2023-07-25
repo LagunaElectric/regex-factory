@@ -2,10 +2,10 @@
 
 <template>
   <div
-    class="dark:bg-primary-900 dark:text-primary-icon max-h-16 items-center flex justify-center lg:justify-between p-4 relative"
+    class="dark:bg-primary-900 dark:text-primary-icon max-h-16 items-center font-brand flex justify-center lg:justify-between p-4 relative"
   >
     <span class="text-4xl font-bold self-center">
-      <span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300 italic">RegEx</span
+      <span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300">RegEx</span
       >Factory
     </span>
     <div class="hidden xxs:flex gap-1 absolute lg:static right-2 sm:right-4 top-4">
