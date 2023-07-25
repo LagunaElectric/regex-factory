@@ -23,6 +23,7 @@ export default <Partial<Config>>{
             900: "#F4EDDA",
             border: "#DDD3B7",
             icon: "#363430",
+            active: "#D5C9B2",
           },
         },
       },

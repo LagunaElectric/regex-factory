@@ -4,6 +4,7 @@ import { computed } from "vue"
 export type BigTextProps = {
   label?: string
   modelValue?: string
+  readonly?: boolean
 }
 
 const props = defineProps<BigTextProps>()
@@ -30,6 +31,7 @@ const value = computed({
       rows="10"
       autocomplete="off"
       spellcheck="false"
+      :readonly="props.readonly"
       v-model="value"
     ></textarea>
   </div>

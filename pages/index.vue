@@ -57,7 +57,7 @@ watch([input, factoryRules], applyRules)
   <div
     class="flex flex-col h-screen max-h-screen text-primary-light-icon dark:text-primary-dark-icon border-primary-light-border dark:border-primary-dark-border"
   >
-    <Header class="" />
+    <Header />
     <div
       class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-2 grid-rows-3 gap-1 justify-stretch items-stretch bg-primary-light-900 dark:bg-primary-dark-800 dark:text-neutral-200"
     >
@@ -83,7 +83,7 @@ watch([input, factoryRules], applyRules)
         </div>
       </div>
       <BigText label="Input:" class="lg:py-2 px-2 lg:col-span-2" v-model="input" />
-      <BigText label="Output:" class="lg:py-2 px-2 lg:col-span-2" v-model="output" />
+      <BigText label="Output:" class="lg:py-2 px-2 lg:col-span-2" v-model="output" :readonly="true" />
     </div>
     <Footer />
   </div>

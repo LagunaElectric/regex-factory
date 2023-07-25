@@ -79,36 +79,44 @@ const requestDelete = () => {
       <span class="dark:text-gray-300 text-primary-light-icon grow-0 shrink-0"> → </span>
       <span ref="substitutionSpanRef" class="font-mono grow text-sm basis-1">{{ substitutionTruncated }}</span>
     </div>
-    <div class="flex gap-1 shrink-0 dark:text-primary-dark-icon">
+    <div class="flex gap-1 h-fit items-center shrink-0 dark:text-primary-dark-icon">
       <IconButton
         name="mdi:regex"
+        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'dark:bg-primary-dark-active': props.isRegEx,
+          'bg-primary-light-active dark:bg-primary-dark-active':
+            props.isRegEx,
         }"
         @click="toggleRegEx"
       />
       <IconButton
         name="mdi:format-letter-case"
+        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'dark:bg-primary-dark-active': props.isCaseSensitive,
+          'bg-primary-light-active dark:bg-primary-dark-active':
+            props.isCaseSensitive,
         }"
         @click="toggleCaseSensitive"
       />
       <IconButton
         name="material-symbols:match-word-rounded"
+        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'dark:bg-primary-dark-active': props.isWholeWord,
+          'bg-primary-light-active dark:bg-primary-dark-active ':
+            props.isWholeWord,
         }"
         @click="toggleWholeWord"
       />
       <IconButton
         name="codicon:replace-all"
+        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'dark:bg-primary-dark-active': props.isReplaceAll,
+          'bg-primary-light-active dark:bg-primary-dark-active ':
+            props.isReplaceAll,
         }"
         @click="toggleReplaceAll"
       />
-      <IconButton name="mdi:delete-outline" class="text-red-400" @click="requestDelete" />
+      <IconButton name="mdi:delete-outline" class="text-red-400 hover:bg-primary-light-active hover:dark:bg-primary-dark-active" @click="requestDelete" />
     </div>
   </div>
 </template>

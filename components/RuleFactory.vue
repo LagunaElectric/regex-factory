@@ -76,44 +76,44 @@ function createRule() {
       >
         <IconButton
           name="mdi:regex"
-          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleRegEx()"
           :is-toggled="isRegEx"
           :class="{
-            'dark:bg-primary-dark-active': isRegEx,
+            'bg-primary-light-active dark:bg-primary-dark-active': isRegEx,
           }"
         />
         <IconButton
           name="mdi:format-letter-case"
-          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleCaseSensitive()"
           :is-toggled="isCaseSensitive"
           :class="{
-            'dark:bg-primary-dark-active': isCaseSensitive,
+            'bg-primary-light-active dark:bg-primary-dark-active': isCaseSensitive,
           }"
         />
         <IconButton
           name="material-symbols:match-word-rounded"
-          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleWholeWord()"
           :is-toggled="isWholeWord"
           :class="{
-            'dark:bg-primary-dark-active': isWholeWord,
+            'bg-primary-light-active dark:bg-primary-dark-active': isWholeWord,
           }"
         />
         <IconButton
           name="codicon:replace-all"
-          class="rounded-sm dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
           @click="toggleReplaceAll()"
           :is-toggled="isReplaceAll"
           :class="{
-            'dark:bg-primary-dark-active': isReplaceAll,
+            'bg-primary-light-active dark:bg-primary-dark-active': isReplaceAll,
           }"
         />
       </div>
       <IconButton
         name="mdi:plus-circle-outline"
-        class="rounded-sm h-full self-center dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-primary-dark-icon"
+        class="rounded-sm h-full self-center hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-primary-dark-icon"
         @click="createRule()"
       />
     </div>

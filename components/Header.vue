@@ -30,18 +30,18 @@ console.log(colorMode)
     <div class="hidden xxs:flex gap-1 absolute lg:static right-2 sm:right-4 top-4">
       <NuxtLink to="https://www.github.com/LagunaElectric" target="_blank">
         <IconButton
-          class="w-8 h-8 rounded-sm grow hover:bg-primary-dark-active hidden sm:flex"
+          class="w-8 h-8 rounded-sm grow hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden sm:flex"
           name="brandico:github"
         />
       </NuxtLink>
       <NuxtLink to="https://www.paypal.com/paypalme/my/profile" target="_blank">
         <IconButton
-          class="w-8 h-8 rounded-sm grow hover:bg-primary-dark-active hidden xs:flex"
+          class="w-8 h-8 rounded-sm grow hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden xs:flex"
           name="simple-icons:paypal"
         />
       </NuxtLink>
       <IconButton
-        class="w-8 h-8 rounded-sm grow hover:bg-primary-dark-active"
+        class="w-8 h-8 rounded-sm grow hover:bg-primary-light-active dark:hover:bg-primary-dark-active"
         :name="themeIcon"
         @click="toggleColorMode"
       />
