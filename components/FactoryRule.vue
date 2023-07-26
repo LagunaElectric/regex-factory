@@ -75,48 +75,62 @@ const requestDelete = () => {
   <div class="flex max-w-full justify-between items-center py-1 min-w-0 break-all relative">
     <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
     <div class="flex gap-2 items-center grow">
-      <span ref="matchSpanRef" class="font-mono text-sm grow basis-1">{{ matchTruncated }}</span>
-      <span class="dark:text-gray-300 text-primary-light-icon grow-0 shrink-0"> → </span>
-      <span ref="substitutionSpanRef" class="font-mono grow text-sm basis-1">{{ substitutionTruncated }}</span>
+      <span
+        ref="matchSpanRef"
+        class="font-mono text-sm transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon grow basis-1"
+      >
+        {{ matchTruncated }}
+      </span>
+      <span
+        class="transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon grow-0 shrink-0"
+      >
+        →
+      </span>
+      <span
+        ref="substitutionSpanRef"
+        class="font-mono transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon grow text-sm basis-1"
+      >
+        {{ substitutionTruncated }}
+      </span>
     </div>
     <div class="flex gap-1 h-fit items-center shrink-0 dark:text-primary-dark-icon">
       <IconButton
         name="mdi:regex"
-        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
+        class="rounded-sm transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'bg-primary-light-active dark:bg-primary-dark-active':
-            props.isRegEx,
+          'bg-primary-light-active dark:bg-primary-dark-active': props.isRegEx,
         }"
         @click="toggleRegEx"
       />
       <IconButton
         name="mdi:format-letter-case"
-        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
+        class="rounded-sm transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'bg-primary-light-active dark:bg-primary-dark-active':
-            props.isCaseSensitive,
+          'bg-primary-light-active dark:bg-primary-dark-active': props.isCaseSensitive,
         }"
         @click="toggleCaseSensitive"
       />
       <IconButton
         name="material-symbols:match-word-rounded"
-        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
+        class="rounded-sm transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'bg-primary-light-active dark:bg-primary-dark-active ':
-            props.isWholeWord,
+          'bg-primary-light-active dark:bg-primary-dark-active ': props.isWholeWord,
         }"
         @click="toggleWholeWord"
       />
       <IconButton
         name="codicon:replace-all"
-        class="rounded-sm hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
+        class="rounded-sm transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         :class="{
-          'bg-primary-light-active dark:bg-primary-dark-active ':
-            props.isReplaceAll,
+          'bg-primary-light-active dark:bg-primary-dark-active ': props.isReplaceAll,
         }"
         @click="toggleReplaceAll"
       />
-      <IconButton name="mdi:delete-outline" class="text-red-400 hover:bg-primary-light-active hover:dark:bg-primary-dark-active" @click="requestDelete" />
+      <IconButton
+        name="mdi:delete-outline"
+        class="text-red-400 transition-colors duration-300 fill-mode-forward hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
+        @click="requestDelete"
+      />
     </div>
   </div>
 </template>

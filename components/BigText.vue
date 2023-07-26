@@ -21,10 +21,16 @@ const value = computed({
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <label v-if="props.label" for="textInput" class="dark:text-neutral-200">{{ props.label }}</label>
+  <div class="flex flex-col transition-colors duration-300 fill-mode-forward">
+    <label
+      v-if="props.label"
+      for="textInput"
+      class="text-primary-light-icon dark:text-primary-dark-icon transition-colors duration-300 fill-mode-forward"
+    >
+      {{ props.label }}
+    </label>
     <textarea
-      class="resize-none min-w-32 w-full h-full bg-primary-light-700 dark:bg-primary-dark-700 dark:text-neutral-200 border-primary-light-border dark:border-primary-dark-border border tracking-wide rounded-sm p-2"
+      class="resize-none min-w-32 w-full h-full transition-colors duration-300 fill-mode-forward text-primary-light-icon bg-primary-light-700 dark:bg-primary-dark-700 dark:text-primary-dark-icon border-primary-light-border dark:border-primary-dark-border border tracking-wide rounded-sm p-2"
       name="input"
       id="textInput"
       cols="30"

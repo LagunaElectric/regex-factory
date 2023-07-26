@@ -51,15 +51,15 @@ function createRule() {
 </script>
 
 <template>
-  <div class="flex flex-col 2xl:flex-row items-center h-fit gap-1 p-1">
-    <div class="flex grow flex-col w-full 2xl:w-auto gap-1">
+  <div class="flex flex-col 2xl:flex-row transition-colors duration-300 fill-mode-forward items-center h-fit gap-1 p-1">
+    <div class="flex grow flex-col w-full transition-colors duration-300 fill-mode-forward 2xl:w-auto gap-1">
       <input
         v-model="match"
         placeholder="Find"
         type="text"
         name="findText"
         id="find-text"
-        class="bg-primary-light-700 dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
+        class="bg-primary-light-700 transition-colors duration-300 text-primary-light-icon dark:text-primary-dark-icon fill-mode-forward dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
       <input
         v-model="substitution"
@@ -67,16 +67,18 @@ function createRule() {
         type="text"
         name="findText"
         id="find-text"
-        class="bg-primary-light-700 dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
+        class="bg-primary-light-700 dark:bg-primary-dark-700 text-primary-light-icon dark:text-primary-dark-icon transition-colors duration-300 fill-mode-forward border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
     </div>
-    <div class="flex w-full 2xl:w-auto justify-between 2xl:justify-normal">
+    <div
+      class="flex w-full 2xl:w-auto justify-between transition-colors duration-300 fill-mode-forward 2xl:justify-normal"
+    >
       <div
-        class="2xl:grid 2xl:grid-cols-2 flex justify-center shrink-0 items-center h-fit gap-1 dark:text-primary-dark-icon"
+        class="2xl:grid 2xl:grid-cols-2 flex justify-center shrink-0 transition-colors duration-300 fill-mode-forward items-center h-fit gap-1 text-primary-light-icon dark:text-primary-dark-icon"
       >
         <IconButton
           name="mdi:regex"
-          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30"
           @click="toggleRegEx()"
           :is-toggled="isRegEx"
           :class="{
@@ -85,7 +87,7 @@ function createRule() {
         />
         <IconButton
           name="mdi:format-letter-case"
-          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30"
           @click="toggleCaseSensitive()"
           :is-toggled="isCaseSensitive"
           :class="{
@@ -94,7 +96,7 @@ function createRule() {
         />
         <IconButton
           name="material-symbols:match-word-rounded"
-          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30"
           @click="toggleWholeWord()"
           :is-toggled="isWholeWord"
           :class="{
@@ -103,7 +105,7 @@ function createRule() {
         />
         <IconButton
           name="codicon:replace-all"
-          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200"
+          class="rounded-sm hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30"
           @click="toggleReplaceAll()"
           :is-toggled="isReplaceAll"
           :class="{
@@ -113,7 +115,7 @@ function createRule() {
       </div>
       <IconButton
         name="mdi:plus-circle-outline"
-        class="rounded-sm h-full self-center hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:active:bg-neutral-200/30 transition-colors duration-200 dark:text-primary-dark-icon"
+        class="rounded-sm h-full self-center transition-colors duration-300 fill-mode-forward text-primary-light-icon hover:bg-primary-light-active dark:hover:bg-primary-dark-active dark:text-primary-dark-icon"
         @click="createRule()"
       />
     </div>

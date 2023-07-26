@@ -41,5 +41,5 @@ export default <Partial<Config>>{
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }

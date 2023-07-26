@@ -22,26 +22,28 @@ console.log(colorMode)
 
 <template>
   <div
-    class="dark:bg-primary-dark-900 bg-primary-light-900 border-primary-light-border border-b dark:border-none dark:text-primary-dark-icon text-primary-light-icon max-h-16 items-center font-brand flex justify-center lg:justify-between p-4 relative"
+    class="dark:bg-primary-dark-900 transition-all duration-300 fill-mode-forward bg-primary-light-900 border-primary-light-border border-b dark:border-black dark:text-primary-dark-icon text-primary-light-icon max-h-16 items-center font-brand flex justify-center lg:justify-between p-4 relative"
   >
-    <span class="text-4xl font-bold self-center">
+    <span
+      class="text-4xl transition-colors duration-300 fill-mode-forward font-bold self-center text-primary-light-icon dark:text-primary-dark-icon"
+    >
       <span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300">RegEx</span>Factory
     </span>
     <div class="hidden xxs:flex gap-1 absolute lg:static right-2 sm:right-4 top-4">
       <NuxtLink to="https://www.github.com/LagunaElectric" target="_blank">
         <IconButton
-          class="w-8 h-8 rounded-sm grow hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden sm:flex"
+          class="w-8 h-8 transition-colors duration-300 fill-mode-forward rounded-sm grow text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden sm:flex"
           name="brandico:github"
         />
       </NuxtLink>
       <NuxtLink to="https://www.paypal.com/paypalme/my/profile" target="_blank">
         <IconButton
-          class="w-8 h-8 rounded-sm grow hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden xs:flex"
+          class="w-8 h-8 transition-colors duration-300 fill-mode-forward rounded-sm grow text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden xs:flex"
           name="simple-icons:paypal"
         />
       </NuxtLink>
       <IconButton
-        class="w-8 h-8 rounded-sm grow hover:bg-primary-light-active dark:hover:bg-primary-dark-active"
+        class="w-8 h-8 transition-colors duration-300 fill-mode-forward rounded-sm grow text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active dark:hover:bg-primary-dark-active"
         :name="themeIcon"
         @click="toggleColorMode"
       />

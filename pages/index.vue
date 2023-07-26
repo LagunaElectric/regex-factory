@@ -55,22 +55,26 @@ watch([input, factoryRules], applyRules)
 
 <template>
   <div
-    class="flex flex-col h-screen max-h-screen text-primary-light-icon dark:text-primary-dark-icon border-primary-light-border dark:border-primary-dark-border"
+    class="flex flex-col h-screen transition-colors duration-300 fill-mode-forward max-h-screen text-primary-light-icon dark:text-primary-dark-icon border-primary-light-border dark:border-primary-dark-border"
   >
     <Header />
     <div
-      class="grid lg:grid-cols-3 grow max-h-full lg:grid-rows-2 grid-rows-3 gap-1 justify-stretch items-stretch bg-primary-light-900 dark:bg-primary-dark-800 dark:text-neutral-200"
+      class="grid lg:grid-cols-3 transition-colors duration-300 fill-mode-forward grow max-h-full lg:grid-rows-2 grid-rows-3 gap-1 justify-stretch items-stretch bg-primary-light-900 dark:bg-primary-dark-800 dark:text-neutral-200"
     >
-      <div class="relative h-full lg:row-span-2">
-        <div class="absolute inset-0 flex flex-col overflow-auto gap-1 px-2 pb-2">
+      <div class="relative h-full transition-colors duration-300 fill-mode-forward lg:row-span-2">
+        <div
+          class="absolute inset-0 transition-colors duration-300 fill-mode-forward flex flex-col overflow-auto gap-1 px-2 pb-2"
+        >
           <RuleFactory
-            class="justify-between sticky top-0 lg:mt-8 z-10 dark:bg-primary-dark-700 rounded-sm p-1 border border-primary-light-border dark:border-primary-dark-border"
+            class="justify-between transition-colors duration-300 fill-mode-forward sticky top-0 mt-1 lg:mt-8 z-10 dark:bg-primary-dark-700 rounded-sm p-1 border border-primary-light-border dark:border-primary-dark-border"
             @rule-created="(rule) => factoryRules.push(rule)"
           />
-          <div class="overflow-auto shrink">
+          <div
+            class="overflow-auto grow p-1 rounded-sm border transition-colors duration-300 fill-mode-forward border-primary-light-border dark:border-primary-dark-border bg-primary-light-700 dark:bg-primary-dark-700"
+          >
             <FactoryRule
               v-for="(rule, i) in factoryRules"
-              class="px-1 mb-1 text-lg dark:bg-primary-dark-500 rounded-sm border border-primary-light-border dark:border-primary-dark-border"
+              class="px-1 mb-1 text-lg bg-primary-light-900 dark:bg-primary-dark-500 rounded-sm border border-primary-light-border dark:border-primary-dark-border"
               v-bind="rule"
               :key="genRuleKey(rule, i)"
               @update:is-reg-ex="(val) => (rule.isRegEx = val)"
