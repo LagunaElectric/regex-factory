@@ -41,7 +41,6 @@ const output = ref("")
 
 const factoryRules = reactive<FactoryRuleProps[]>([])
 
-Math.random()
 function applyRules() {
   const regexFactory = new RegExFactory(factoryRules)
   output.value = regexFactory.process(input.value)

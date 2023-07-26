@@ -36,7 +36,7 @@ console.log(colorMode)
           name="brandico:github"
         />
       </NuxtLink>
-      <NuxtLink to="https://www.paypal.com/paypalme/my/profile" target="_blank">
+      <NuxtLink to="https://paypal.me/LagunaStudios" target="_blank">
         <IconButton
           class="w-8 h-8 transition-colors duration-300 fill-mode-forward rounded-sm grow text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden xs:flex"
           name="simple-icons:paypal"

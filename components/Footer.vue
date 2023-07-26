@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="flex justify-center xs:justify-between px-2 h-6 text-xs transition-colors duration-300 fill-mode-forward text-[#586E75] bg-primary-light-900 dark:bg-primary-dark-850 dark:text-[#72696A] items-center border-t dark:border-black border-primary-light-border"
+    class="flex justify-center xs:justify-between px-2 h-6 text-xs transition-colors duration-300 fill-mode-forward text-[#586E75] bg-primary-light-900 dark:bg-primary-dark-800 dark:text-[#72696A] items-center border-t dark:border-black border-primary-light-border"
   >
     <div class="hidden sm:block">
       <!-- <span>© Ronald Jimmy Headrick III 2023. All rights reserved.</span> -->

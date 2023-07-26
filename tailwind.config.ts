@@ -12,7 +12,6 @@ export default <Partial<Config>>{
             500: "#403838",
             700: "#2c2525",
             800: "#211c1c",
-            850: "#201B1B",
             900: "#191515",
             border: "#72696A",
             icon: "#FFF0F3",
