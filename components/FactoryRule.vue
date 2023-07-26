@@ -72,9 +72,11 @@ const requestDelete = () => {
 </script>
 
 <template>
-  <div class="flex max-w-full justify-between items-center py-1 min-w-0 break-all relative">
+  <div
+    class="flex max-w-full transition-colors duration-300 fill-mode-forward justify-between items-center py-1 min-w-0 break-all relative"
+  >
     <span class="text-sm font-mono text-transparent absolute z-0" ref="dummyLetter">a</span>
-    <div class="flex gap-2 items-center grow">
+    <div class="flex gap-2 items-center transition-colors duration-300 fill-mode-forward grow">
       <span
         ref="matchSpanRef"
         class="font-mono text-sm transition-colors duration-300 fill-mode-forward text-primary-light-icon dark:text-primary-dark-icon grow basis-1"
