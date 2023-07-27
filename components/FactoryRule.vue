@@ -130,7 +130,7 @@ const requestDelete = () => {
       />
       <IconButton
         name="mdi:delete-outline"
-        class="text-red-400 transition-colors duration-300 fill-mode-forward hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
+        class="rounded-sm text-red-400 transition-colors duration-300 fill-mode-forward hover:bg-primary-light-active hover:dark:bg-primary-dark-active"
         @click="requestDelete"
       />
     </div>
