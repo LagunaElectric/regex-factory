@@ -1,7 +1,7 @@
 <script setup>
 const colorMode = useColorMode()
 
-const isDark = ref(colorMode.preference === "dark")
+const isDark = ref(colorMode.value === "dark")
 const themeIcon = computed(() =>
   isDark.value ? "material-symbols:dark-mode-outline-rounded" : "material-symbols:light-mode-outline",
 )
@@ -14,7 +14,7 @@ watch(
 )
 
 const toggleColorMode = () => {
-  colorMode.preference = isDark.value ? "light" : "dark"
+  colorMode.value = isDark.value ? "light" : "dark"
 }
 </script>
 
