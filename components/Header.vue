@@ -1,15 +1,16 @@
 <script setup>
 const colorMode = useColorMode()
-
-const isDark = ref(colorMode.value === "dark")
-const themeIcon = computed(() =>
+const isDark = ref(colorMode.preference === "dark")
+const themeIcon = computedEager(() =>
   isDark.value ? "material-symbols:dark-mode-outline-rounded" : "material-symbols:light-mode-outline",
 )
+console.log(themeIcon.value)
 
 watch(
   () => colorMode.preference,
-  (preference) => {
-    isDark.value = preference === "dark"
+  (value) => {
+    isDark.value = value === "dark"
+    console.log(isDark.value)
   },
 )
 
