@@ -28,7 +28,7 @@ const toggleColorMode = () => {
       <span class="bg-gradient-to-br bg-clip-text text-transparent from-red-500 to-orange-300">RegEx</span>Factory
     </span>
     <div class="hidden xxs:flex gap-1 absolute lg:static right-2 sm:right-4 top-4">
-      <NuxtLink to="https://www.github.com/LagunaElectric" target="_blank">
+      <NuxtLink to="https://www.github.com/LagunaElectric/regex-factory" target="_blank">
         <IconButton
           class="w-8 h-8 transition-colors duration-300 fill-mode-forward rounded-sm grow text-primary-light-icon dark:text-primary-dark-icon hover:bg-primary-light-active dark:hover:bg-primary-dark-active hidden sm:flex"
           name="brandico:github"
