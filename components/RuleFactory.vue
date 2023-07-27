@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { FactoryRuleProps } from "./FactoryRule.vue"
+import { create } from "domain";
 const emit = defineEmits(["ruleCreated"])
 
 const match = ref("")
@@ -10,6 +11,7 @@ const isRegEx = ref(false)
 const isCaseSensitive = ref(false)
 const isWholeWord = ref(false)
 const isReplaceAll = ref(false)
+const matchInputRef = ref<HTMLInputElement | null>(null)
 
 function toggleRegEx() {
   isRegEx.value = !isRegEx.value
@@ -47,6 +49,7 @@ function createRule() {
     isReplaceAll: isReplaceAll.value,
   } as FactoryRuleProps)
   reset()
+  matchInputRef.value?.focus()
 }
 </script>
 
@@ -59,6 +62,8 @@ function createRule() {
         type="text"
         name="findText"
         id="find-text"
+        ref="matchInputRef"
+        @keyup.enter="createRule"
         class="bg-primary-light-700 focus-visible:outline-2 focus-visible:outline-double focus-visible:outline-primary-dark-icon transition-colors duration-300 text-primary-light-icon dark:text-primary-dark-icon fill-mode-forward dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
       <input
@@ -67,6 +72,7 @@ function createRule() {
         type="text"
         name="findText"
         id="find-text"
+        @keyup.enter="createRule"
         class="bg-primary-light-700 focus-visible:outline-2 focus-visible:outline-double focus-visible:outline-primary-dark-icon dark:bg-primary-dark-700 text-primary-light-icon dark:text-primary-dark-icon transition-colors duration-300 fill-mode-forward border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
     </div>
