@@ -46,7 +46,7 @@ const matchTruncated = computed(() => {
 
 const substitutionTruncated = computed(() => {
   if (isSubstitutionOverflown.value)
-    return props.substitution.slice(0, substitutionSpanWidthInChars.value).trim() + "..."
+    return props.substitution.slice(0, substitutionSpanWidthInChars.value - 3).trim() + "..."
   return props.substitution
 })
 

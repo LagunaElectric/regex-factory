@@ -62,10 +62,10 @@ watch([input, factoryRules], applyRules)
     >
       <div class="relative h-full transition-colors duration-300 fill-mode-forward lg:row-span-2">
         <div
-          class="absolute inset-0 transition-colors duration-300 fill-mode-forward flex flex-col overflow-auto gap-1 px-2 pb-2"
+          class="absolute inset-0 transition-colors duration-300 fill-mode-forward flex flex-col overflow-auto gap-1 px-2 lg:pb-2"
         >
           <RuleFactory
-            class="justify-between transition-colors duration-300 fill-mode-forward sticky top-0 mt-1 lg:mt-8 z-10 dark:bg-primary-dark-700 rounded-sm p-1 border border-primary-light-border dark:border-primary-dark-border"
+            class="justify-between transition-colors duration-300 mt-2 lg:mt-8 fill-mode-forward sticky top-0 z-10 dark:bg-primary-dark-700 rounded-sm p-1 border border-primary-light-border dark:border-primary-dark-border"
             @rule-created="(rule) => factoryRules.push(rule)"
           />
           <div
@@ -85,10 +85,10 @@ watch([input, factoryRules], applyRules)
           </div>
         </div>
       </div>
-      <BigText label="Input:" class="lg:py-2 px-2 lg:col-span-2" v-model="input" />
-      <BigText label="Output:" class="lg:py-2 px-2 lg:col-span-2" v-model="output" :readonly="true" />
+      <BigText label="Input:" class="px-2 lg:pl-0 lg:pt-2 lg:col-span-2" v-model="input" />
+      <BigText label="Output:" class="pb-2 px-2 lg:pl-0 lg:col-span-2" v-model="output" :readonly="true" />
     </div>
-    <Footer />
+    <Footer class="hidden xs:flex" />
   </div>
 </template>
 

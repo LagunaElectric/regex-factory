@@ -14,10 +14,8 @@ watch(
 )
 
 const toggleColorMode = () => {
-  console.log(colorMode)
   colorMode.preference = isDark.value ? "light" : "dark"
 }
-console.log(colorMode)
 </script>
 
 <template>
