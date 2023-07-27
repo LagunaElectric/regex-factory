@@ -6,12 +6,8 @@
   >
     <div>
       <span>
-        Laguna
-        | 2023
-        | Discord: laguna0475
-        | Made with <Icon name="twemoji:red-heart" />
-        , <Icon name="devicon:vuejs" />
-        , and <Icon name="logos:nuxt-icon" />.
+        Laguna | 2023 | Discord: laguna0475 | Made with <Icon name="twemoji:red-heart" /> ,
+        <Icon name="devicon:vuejs" /> , and <Icon name="logos:nuxt-icon" />.
       </span>
     </div>
   </div>
