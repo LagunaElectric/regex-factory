@@ -64,7 +64,7 @@ function createRule() {
         id="find-text"
         ref="matchInputRef"
         @keyup.enter="createRule"
-        class="bg-primary-light-700 focus-visible:outline-2 focus-visible:outline-double focus-visible:outline-primary-dark-icon transition-colors duration-300 text-primary-light-icon dark:text-primary-dark-icon fill-mode-forward dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
+        class="bg-primary-light-700 focus-visible:outline-2 focus-visible:outline-double focus-visible:outline-primary-light-icon dark:focus-visible:outline-primary-dark-icon transition-colors duration-300 text-primary-light-icon dark:text-primary-dark-icon fill-mode-forward dark:bg-primary-dark-700 border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
       <input
         v-model="substitution"
@@ -73,7 +73,7 @@ function createRule() {
         name="findText"
         id="find-text"
         @keyup.enter="createRule"
-        class="bg-primary-light-700 focus-visible:outline-2 focus-visible:outline-double focus-visible:outline-primary-dark-icon dark:bg-primary-dark-700 text-primary-light-icon dark:text-primary-dark-icon transition-colors duration-300 fill-mode-forward border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
+        class="bg-primary-light-700 focus-visible:outline-2 focus-visible:outline-double focus-visible:outline-primary-light-icon dark:focus-visible:outline-primary-dark-icon dark:bg-primary-dark-700 text-primary-light-icon dark:text-primary-dark-icon transition-colors duration-300 fill-mode-forward border-primary-light-border dark:border-primary-dark-border rounded-sm border grow"
       />
     </div>
     <div
